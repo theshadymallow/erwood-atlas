@@ -19,7 +19,7 @@
     m.addTo(groups[p.kind]); markers[p.id] = m;
   });
   var mapEl = document.getElementById("map");
-  function compact() { mapEl.classList.toggle("compact", W * Math.pow(2, map.getZoom()) < 900); }
+  function compact() { mapEl.classList.toggle("compact", W * Math.pow(2, map.getZoom()) < 680); }
   map.on("zoomend", compact); compact();
   window.addEventListener("resize", function () { map.invalidateSize(); compact(); });
   var panel = document.getElementById("panel");

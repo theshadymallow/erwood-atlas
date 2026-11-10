@@ -21,18 +21,18 @@ figure{margin:0 0 18px}figure img{display:block;width:100%;height:auto;margin-bo
 .routes{margin:0;padding-left:20px;font-size:17px}.routes li{margin-bottom:3px}
 :focus-visible{outline:2px solid var(--verdigris);outline-offset:2px}
 .pin-wrap{position:relative;width:0;height:0}
-.pin{position:absolute;left:-9px;top:-9px;width:18px;height:18px;border:2.5px solid var(--halo);cursor:pointer;box-shadow:0 1px 3px #0007;transition:transform .12s}
+.pin{position:absolute;left:-6.5px;top:-6.5px;width:13px;height:13px;border:2px solid var(--halo);cursor:pointer;box-shadow:0 1px 3px #0007;transition:transform .12s}
 .leaflet-marker-icon:hover .pin,.active .pin{transform:scale(1.35)}
 .k-city .pin{background:#faf7eb;border-color:#1c201a;border-radius:50% 50% 50% 50%/30% 30% 70% 70%}
 .k-haven .pin{background:#145c52;border-radius:50%}.k-works .pin{background:#1c201a}
 .k-road .pin{background:#8e3218;transform:rotate(45deg)}.k-ruin .pin{background:#8e3218;border-radius:2px;clip-path:polygon(20% 0,50% 30%,80% 0,100% 20%,70% 50%,100% 80%,80% 100%,50% 70%,20% 100%,0 80%,30% 50%,0 20%)}
 .k-land .pin{background:#2f7f9a;border-radius:50%}
 .k-road.active .pin,.leaflet-marker-icon:hover .k-road .pin{transform:rotate(45deg) scale(1.35)}
-.lbl{position:absolute;white-space:nowrap;font:700 15px/1 Georgia,serif;color:#1c201a;text-shadow:-2px 0 #f3e9cd,2px 0 #f3e9cd,0 -2px #f3e9cd,0 2px #f3e9cd,-1.5px -1.5px #f3e9cd,1.5px 1.5px #f3e9cd,1.5px -1.5px #f3e9cd,-1.5px 1.5px #f3e9cd;cursor:pointer}
-.k-city .lbl{font-style:italic;font-size:17px}
-.side-r .lbl{left:15px;top:-7px}.side-l .lbl{right:15px;top:-7px}.side-t .lbl{left:0;transform:translateX(-50%);bottom:13px}.side-b .lbl{left:0;transform:translateX(-50%);top:13px}
+.lbl{position:absolute;white-space:nowrap;font:700 12px/1 Georgia,serif;color:#1c201a;text-shadow:-2px 0 #f3e9cd,2px 0 #f3e9cd,0 -2px #f3e9cd,0 2px #f3e9cd,-1.5px -1.5px #f3e9cd,1.5px 1.5px #f3e9cd,1.5px -1.5px #f3e9cd,-1.5px 1.5px #f3e9cd;cursor:pointer}
+.k-city .lbl{font-style:italic;font-size:13.5px}
+.side-r .lbl{left:11px;top:-6px}.side-l .lbl{right:11px;top:-6px}.side-t .lbl{left:0;transform:translateX(-50%);bottom:10px}.side-b .lbl{left:0;transform:translateX(-50%);top:10px}
 .compact .minor .lbl{display:none}
-.region{white-space:nowrap;font:400 19px/1 Georgia,serif;letter-spacing:.04em;transform:translate(-50%,-50%);color:#1c201a;text-shadow:-2px 0 #f3e9cd,2px 0 #f3e9cd,0 -2px #f3e9cd,0 2px #f3e9cd;display:inline-block;pointer-events:none}
+.region{white-space:nowrap;font:400 13px/1 Georgia,serif;letter-spacing:.05em;transform:translate(-50%,-50%);color:#1c201a;text-shadow:-2px 0 #f3e9cd,2px 0 #f3e9cd,0 -2px #f3e9cd,0 2px #f3e9cd;display:inline-block;pointer-events:none}
 .compact .region{display:none}
 .leaflet-container{font:inherit;background:#c9bd9d}.leaflet-container a{color:#1c201a}
 .compass{font:700 13px/1 Georgia,serif;background:#f3e9cdcc;padding:6px 8px;color:#1c201a}

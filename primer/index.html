@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Erwood Player Primer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&family=IM+Fell+Double+Pica&display=swap">
+<style>
+/* Layout concept: a Collegium intake ledger, ruled entries with a narrow margin column for timing and purpose. */
+:root{--bg:#e9ece4;--sheet:#f5f6f0;--ink:#1f2a25;--soft:#55625a;--rule:#bcc5b8;--verdigris:#22695f;--tint:#dbe7e0;--rust:#963f22;--rusttint:#f0e0d6;
+--display:"IM Fell Double Pica","Iowan Old Style",Georgia,serif;--body:"Alegreya",Georgia,serif;--label:"Alegreya Sans SC","Gill Sans",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161d1a;--sheet:#1e2723;--ink:#e4e9e1;--soft:#a2afa6;--rule:#3b4841;--verdigris:#74c4b4;--tint:#21362f;--rust:#e29a79;--rusttint:#3a2820;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161d1a;--sheet:#1e2723;--ink:#e4e9e1;--soft:#a2afa6;--rule:#3b4841;--verdigris:#74c4b4;--tint:#21362f;--rust:#e29a79;--rusttint:#3a2820;color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font:18px/1.5 var(--body)}
+.page{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;max-width:1120px;margin:0 auto;padding-inline:clamp(16px,4vw,40px);padding-block:32px 72px}
+@media (min-width:980px){.page{grid-template-columns:210px minmax(0,1fr)}nav.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 20px);align-self:start;max-height:calc(100vh - 40px);overflow-y:auto}}
+nav.toc h2{font:700 14px/1.2 var(--label);letter-spacing:.08em;color:var(--soft);margin:0 0 8px;text-transform:lowercase}
+nav.toc ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:2px 16px}
+@media (min-width:980px){nav.toc ol{display:block}}
+nav.toc a{display:block;padding:3px 0;color:var(--ink);text-decoration:none;font-size:16px;border-bottom:1px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--verdigris);border-bottom-color:var(--verdigris)}
+main{min-width:0;background:var(--sheet);padding:clamp(18px,4vw,48px);border:1px solid var(--rule)}
+header.title p.kicker{font:700 15px/1.2 var(--label);letter-spacing:.1em;color:var(--verdigris);margin:0 0 8px;text-transform:lowercase}
+h1{font:400 clamp(38px,6vw,60px)/1.05 var(--display);margin:0 0 12px;text-wrap:balance}
+header.title p.lede{font-size:20px;max-width:62ch;margin:0}
+.stamp{display:inline-block;margin-top:16px;font:700 14px/1.3 var(--label);letter-spacing:.06em;color:var(--rust);border:1.5px solid var(--rust);padding:4px 10px;text-transform:lowercase}
+section{margin-top:52px;padding-top:18px;border-top:3px double var(--rule);scroll-margin-top:16px}
+h2{font:400 clamp(28px,4vw,38px)/1.1 var(--display);margin:0 0 14px;text-wrap:balance}
+h3{font:700 22px/1.25 var(--body);margin:30px 0 8px;text-wrap:balance}
+h4{font:700 16px/1.3 var(--label);letter-spacing:.06em;margin:18px 0 4px;color:var(--verdigris);text-transform:lowercase}
+p,ul,ol.steps{max-width:68ch}
+p{margin:0 0 12px}
+ul,ol.steps{margin:0 0 12px;padding-left:22px}
+li{margin:0 0 5px}
+a{color:var(--verdigris)}
+.read{background:var(--tint);padding:14px 18px 6px;margin:14px 0 16px;max-width:68ch;font-size:19px}
+.read::before{content:"read aloud";display:block;font:700 13px/1 var(--label);letter-spacing:.1em;color:var(--verdigris);margin-bottom:8px}
+.read p{font-style:italic}
+.secret{background:var(--rusttint);padding:12px 16px 4px;margin:14px 0 16px;max-width:68ch}
+.secret::before{content:"gm only";display:block;font:700 13px/1 var(--label);letter-spacing:.1em;color:var(--rust);margin-bottom:6px}
+.scene{display:grid;grid-template-columns:minmax(0,1fr);gap:4px 24px;margin-top:30px;padding-top:12px;border-top:1px solid var(--rule)}
+@media (min-width:700px){.scene{grid-template-columns:118px minmax(0,1fr)}}
+.margin{font:500 15px/1.3 var(--label);letter-spacing:.03em;color:var(--soft)}
+.margin b{display:block;font-size:20px;color:var(--ink);letter-spacing:0;font-weight:700}
+.scene>div{min-width:0}
+.scene h3{margin-top:0}
+.tw{overflow-x:auto;margin:12px 0 18px}
+table{border-collapse:collapse;width:100%;font-size:16.5px;line-height:1.35}
+th{font:700 14.5px/1.2 var(--label);letter-spacing:.05em;text-align:left;color:var(--soft);border-bottom:2px solid var(--ink);padding:6px 10px 6px 0;vertical-align:bottom;text-transform:lowercase}
+td{border-bottom:1px solid var(--rule);padding:7px 12px 7px 0;vertical-align:top}
+td:first-child{font-weight:500}
+.num{font-variant-numeric:tabular-nums}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 28px}
+.npc{border-top:1px solid var(--rule);padding:12px 0 14px;min-width:0}
+.npc h3{margin:0;font-size:21px}
+.npc .role{color:var(--soft);font-size:16px;margin:0 0 8px}
+.npc dl{display:grid;grid-template-columns:62px minmax(0,1fr);gap:2px 10px;margin:0;font-size:16.5px;line-height:1.35}
+.npc dt{font:700 14px/1.5 var(--label);color:var(--verdigris);text-transform:lowercase}
+.npc dd{margin:0}
+.piece{border:1px dashed var(--soft);padding:12px 14px;margin:0;min-width:0}
+.piece h4{margin:0 0 4px}
+.piece p{margin:0;font-style:italic}
+.pieces{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.new{font:700 12.5px/1 var(--label);color:var(--verdigris);border:1px solid var(--verdigris);padding:1px 4px;letter-spacing:.04em;white-space:nowrap}
+footer{margin-top:44px;color:var(--soft);font-size:15.5px}
+:focus-visible{outline:2px solid var(--verdigris);outline-offset:2px}
+</style>
+<style>
+*{box-sizing:border-box}body{margin:0}.links{display:flex;flex-wrap:wrap;gap:6px 20px;margin:0 0 18px;font:700 15px/1.3 var(--label);letter-spacing:.04em;text-transform:lowercase}
+@media print{@page{margin:17mm 16mm}:root{--bg:#fff;--sheet:#fff;--ink:#1a1f1b;--soft:#4c5349;--rule:#bbb;--verdigris:#1d5a51}body{background:#fff;font-size:11.5pt;line-height:1.38}nav.toc,.links,footer{display:none!important}.page{display:block;padding:0;max-width:none}main{border:0;padding:0;background:#fff}section{margin-top:22px;padding-top:10px}h1{font-size:34pt}h2{font-size:21pt}h3{font-size:14pt}h2,h3{break-after:avoid}tr{break-inside:avoid}table{font-size:10.5pt}p,ul,ol.steps{max-width:none}a{color:inherit;text-decoration:none}}
+</style>
+</head><body>
+
+
+<div class="page">
+<nav class="toc" aria-label="Contents"><h2>Contents</h2><ol>
+<li><a href="#pitch">The campaign</a></li><li><a href="#world">Erwood</a></li><li><a href="#cities">The sky</a></li><li><a href="#families">The Families</a></li><li><a href="#green">The Green</a></li><li><a href="#magic">Magic and gods</a></li><li><a href="#uplift">The Scholarship</a></li><li><a href="#character">Your character</a></li><li><a href="#faq">Questions</a></li>
+</ol></nav>
+<main>
+<p class="links"><a href="../">Back to the map</a><a href="erwood-player-primer.pdf">Download as PDF</a></p><header class="title"><p class="kicker">a primer for players</p><h1>Erwood: The Weight of the Sky</h1>
+<p class="lede">Four cities ride the sky above the greatest jungle in Naever. Today, for the first time in your life, one of them has sent for you.</p></header>
+
+<section id="pitch"><h2>The campaign</h2>
+<p>This is a short D&amp;D 5e campaign, about eight sessions, running from level 3 to level 8 by milestones. It's a dark jungle adventure with treasure, ruins, monsters and real danger.</p>
+<p><strong>Your character applied for the Uplift Scholarship, and has just won.</strong> The story begins with something going badly wrong. You will survive it.</p>
+<p>Expect violence and gore, people taken from their lives, cruelty to captives, and children in danger. Tell your GM before the first session if you want anything kept off the table.</p>
+</section>
+
+<section id="world"><h2>Erwood</h2>
+<p>It is the end of the Dry in 997 YK, a year after the Treaty of Thronehold ended the Last War. Erwood broke away from old Nostale during that war and simply never answered to anyone again. It has no king and has never taken a census. People say it's the safest place in Naever to carry a dragonmark, because nobody here keeps a list.</p>
+<p>The year has two seasons, the Dry and the Wet. The Wet begins in a few weeks, and the rivers will drown the roads.</p>
+<div class="tw"><table><thead><tr><th>Coin</th><th>Worth</th><th>For scale</th></tr></thead><tbody>
+<tr><td>Copper crown (cp)</td><td>10 to the sovereign</td><td>A meal at Ninefold is a crown or two</td></tr>
+<tr><td>Silver sovereign (sp)</td><td>10 to the wynar</td><td>A day's work pays a few of these</td></tr>
+<tr><td>Gold wynar (gp)</td><td>10 to the dragon</td><td>A good sword, or a month's careful living</td></tr>
+<tr><td>Platinum dragon (pp)</td><td>10 wynars</td><td>Few people below have ever held one</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="cities"><h2>The sky</h2>
+<p>Lift-stone is mined in the Hollowcrown and flies every airship in Naever. A worked stone binds an air elemental, and the craft is well understood. Anywhere else, it can raise a ship. Only over Erwood, where the Seal on magic is thin, can it raise a city.</p>
+<div class="tw"><table><thead><tr><th>City</th><th>What it is</th></tr></thead><tbody>
+<tr><td>Cassarine</td><td>The first city: the banks, the vaults, the guns and the Tonnage's great hall</td></tr>
+<tr><td>Halcyne</td><td>The city of gardens, and home of the Collegium</td></tr>
+<tr><td>Tetherhold</td><td>The city of foundries and airship sheds, chained to the ground</td></tr>
+<tr><td>The Skerries</td><td>A flock of drifting islands, with estates, temples and a prison rock</td></tr>
+</tbody></table></div>
+<p>A fifth city, Serenfall, fell in 957 on the southern tip of the Hollowcrown. Its wreck is the richest salvage in the Green.</p>
+<h3>Getting up there</h3>
+<p>A home in the sky is called a <strong>berth</strong>, and no one can buy one. You live above only if a Sky Family invites you. A Family's written invitation or pass is called a <strong>weight letter</strong>, and clerks check every letter at the Weighgates on the Chain, the great iron chain from Anchor Sorrel up to Tetherhold.</p>
+<p>Visitors can buy a <strong>day pass</strong> from Corvane for 500 wynars a head. It lasts until dusk. Everything else is illegal: forged letters, smugglers' skiffs, or climbing the Chain itself. Being expelled from the sky is called being <em>weighed out</em>, and it means going over the edge in the Drop.</p>
+</section>
+
+<section id="families"><h2>The Sky Families</h2>
+<p>Six Families have held Erwood for more than three centuries. They govern through the Tonnage, and nearly everyone below works for one of them, or for someone who does.</p>
+<div class="tw"><table><thead><tr><th>Family</th><th>Below</th><th>Above</th></tr></thead><tbody>
+<tr><td>Corvane</td><td>The Chain, the Anchors, the airships and the guns</td><td>The Tonnage's chair and the banks</td></tr>
+<tr><td>Halloran</td><td>The Hollowcrown mines and mine forts</td><td>Cassarine's vaults</td></tr>
+<tr><td>Ysmay</td><td>Collegium stations and survey posts</td><td>The Collegium at Halcyne</td></tr>
+<tr><td>Brask</td><td>River mills, foundries, the Shardworks</td><td>Tetherhold's yards</td></tr>
+<tr><td>Tasque</td><td>Salvage, debts and the Gleaners</td><td>A quiet house on the Skerries</td></tr>
+<tr><td>Dael</td><td>The plantations, timber and beasts of the Spill</td><td>Estates on the Skerries</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="green"><h2>The Green</h2>
+<p>The jungle is rich, and it kills people. All of Erwood lies in a vast crater left when a star fell from the sky. The <strong>Hollowcrown</strong>, a great crescent of mountains, walls it in on the north, east and south. Streams run down from the mountains into the clear lake at its center, the <strong>Ysse</strong>. On the open western side, the river pours out through the floodlands of the <strong>Spill</strong> into the Western Sea. That ocean is full of monsters and Erwood has no usable port, so almost nobody arrives by sea. The grey land under the cities' drift is the <strong>Fallow</strong>, and the ruins and sinkholes are the <strong>Deep Green</strong>.</p>
+<h3>Havens</h3>
+<div class="tw"><table><thead><tr><th>Haven</th><th>What it is</th></tr></thead><tbody>
+<tr><td>Rootfast</td><td>A town in the roots of one colossal tree, run by a council. The healer Alara Venn heals for a promise.</td></tr>
+<tr><td>Ninefold</td><td>Nine lashed rafts on the Spill, where anything can be bought</td></tr>
+<tr><td>The Quiet Hollow</td><td>A dead valley with a Host hermitage, where no magic works</td></tr>
+</tbody></table></div>
+<h3>Who lives here</h3>
+<ul>
+<li><strong>The Ywen</strong> are river people older than the cities. They don't cast spells. They ask, and the green answers. Three cuts on a root mark a safe trail.</li>
+<li><strong>Shifter clans</strong> are the finest guides in the Green.</li>
+<li><strong>Lizardfolk</strong> trade and raft on the Spill, and hold Ninefold together.</li>
+<li><strong>The stuck</strong> are miners, soldiers, contract hands and their children, who came down and stayed. They call themselves that with a grin.</li>
+<li><strong>The Sloughborn</strong> were born under the cities' drift and changed by it, with bark skin, extra eyes and spell-scars. They raid Family convoys under a leader called the Undertow.</li>
+<li><strong>Gleaners</strong> work for Tasque, and travel in threes with a net, a sack and a cage-raft.</li>
+</ul>
+<p>The old advice about the grey hunters of the Fallow is to find a tree or the river, then wait.</p>
+</section>
+
+<section id="magic"><h2>Magic and gods</h2>
+<p>No mortal spell can pass the ninth circle. The Sovereign Host teaches that this is Aureon's Seal. In Erwood the Seal is thin, so magic misbehaves. Most of the jungle is <strong>thin ground</strong>.</p>
+<p>Magic in the Green is dangerous enough that a great deal simply isn't attempted. Armies march with spears and no war-mages, and airships stay high above the canopy. Rootfast's calm is worth more than gold.</p>
+<p><strong>At the table:</strong> magic can act wildly on thin ground, for good or ill. Cantrips always work. Magewrights carry calmstones as a precaution.</p>
+<h3>The Sovereign Host</h3>
+<div class="tw"><table><thead><tr><th>God</th><th>Stands for</th><th>Cleric domains</th><th>Who prays to them here</th></tr></thead><tbody><tr><td>Aureon</td><td>Law, knowledge and magic</td><td>Knowledge, Arcana</td><td>Scholars and the Collegium</td></tr><tr><td>Arawai</td><td>Fertility, plant life, abundance and rain</td><td>Life, Nature</td><td>Farmers, plantation hands and the Ywen</td></tr><tr><td>Balinor</td><td>Beasts, the hunt and the wild</td><td>Life, Nature</td><td>Hunters, trappers and shifter clans</td></tr><tr><td>Boldrei</td><td>Community, home and marriage</td><td>Life</td><td>The havens, where a place at the fire is sworn in her name</td></tr><tr><td>Dol Arrah</td><td>Honour, sacrifice and sunlight</td><td>Light, War</td><td>Fort garrisons, who swear their oaths by her</td></tr><tr><td>Dol Dorn</td><td>Strength, courage and the soldier's craft</td><td>War</td><td>Guards, Chainhands and anyone who climbs the links</td></tr><tr><td>Kol Korran</td><td>Trade, wealth and travel</td><td>Trickery</td><td>Merchants, the Families and Ninefold's raft-folk</td></tr><tr><td>Olladra</td><td>Luck, feasts and good fortune</td><td>Life, Trickery</td><td>Gamblers and the stuck, who pray for a way up</td></tr><tr><td>Onatar</td><td>Artifice, the forge and fire</td><td>Forge, Light</td><td>Smiths, millhands and the Shardworks</td></tr></tbody></table></div>
+<p>Naever's other gods, Odin, Hoar, Isvarr, Moradin and Surtur, have their followers too.</p>
+</section>
+
+<section id="uplift"><h2>The Uplift Scholarship</h2>
+<p>The Uplift is the most famous prize in Erwood, and the one invitation an ordinary person can win. It is awarded by the Collegium.</p>
+<ul>
+<li><strong>To apply,</strong> you sit an interview with a recruiter and hold a brass reading-stone that measures your aptitude. Hundreds apply at every fort and raft-market.</li>
+<li><strong>At the Naming,</strong> fifteen names are read aloud at Fort Halloran's gate, every sixth day. Winners are called Scholars from that moment.</li>
+<li><strong>The prize</strong> is a year of study and service, then a berth for you and one person you choose.</li>
+<li><strong>The journey</strong> is three days down the cut road to Station Nine, then by teleportation circle to Halcyne. Scholars who finish their year are awarded the Scholar's Knot.</li>
+</ul>
+<p>At every Naming the recruiter also reads out the names of past Scholars now berthed above. In the cities, a board lists them.</p>
+</section>
+
+<section id="character"><h2>Your character</h2>
+<p>Build a level 3 character using the standard array, point buy or rolled stats. Feats and Tasha's optional rules are allowed. Any published race and class is welcome, including shifters, changelings, kalashtar, warforged and dragonmarks. Any published background works, and so do Erwood's own: Weighed Out, Haven-born, Chainhand and Rootway Refugee.</p>
+<h3>How did you end up below?</h3>
+<div class="tw"><table><thead><tr><th>d8</th><th>You are</th><th>Why you applied</th></tr></thead><tbody>
+<tr><td class="num">1</td><td>A guard let go when your Halloran garrison was reduced</td><td>You want to be somebody's first choice</td></tr>
+<tr><td class="num">2</td><td>A contract hand whose work ended far from home</td><td>It's the fastest way back to a real life</td></tr>
+<tr><td class="num">3</td><td>Weighed out of Cassarine, and you survived the Drop</td><td>You want your name back</td></tr>
+<tr><td class="num">4</td><td>Shipwrecked when your airship or skiff came down</td><td>You still have somewhere to be</td></tr>
+<tr><td class="num">5</td><td>A survey hand left behind on a Collegium expedition</td><td>You've always wanted to be a scholar</td></tr>
+<tr><td class="num">6</td><td>Born below, and you've only seen the cities from underneath</td><td>You've wanted this since you could look up</td></tr>
+<tr><td class="num">7</td><td>Marked, and smuggled in down the Rootway</td><td>The Collegium promises a place for every mark</td></tr>
+<tr><td class="num">8</td><td>Applying for someone else's sake</td><td>"And yours" was the part you heard</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="faq"><h2>Questions you may have</h2>
+<div class="tw"><table><thead><tr><th>Question</th><th>Answer</th></tr></thead><tbody>
+<tr><td>Who rules the jungle?</td><td>No government does. Each Family guards its own works, and the havens run themselves.</td></tr>
+<tr><td>Do Eberron's books apply?</td><td>Use their races, gods and dragonmarks. Places and history are Naever's own.</td></tr>
+<tr><td>What languages are spoken?</td><td>Common, Ywen, Old Nostalean and the standard 5e languages.</td></tr>
+<tr><td>How do people treat unusual races?</td><td>People below don't much care. The cities are snobbish about anyone from below.</td></tr>
+<tr><td>Can I play a Ywen or Sloughborn?</td><td>Yes, as a reskinned race. Talk to your GM. A Sloughborn needs a good reason to be accepted for the Scholarship.</td></tr>
+<tr><td>Can I be from a Sky Family?</td><td>Only a minor or disgraced relative.</td></tr>
+<tr><td>Can I come from another nation?</td><td>Yes, by the Rootway, a contract or a wreck.</td></tr>
+<tr><td>Are there guns?</td><td>Only cannon. No hand firearms.</td></tr>
+<tr><td>Can someone rich apply?</td><td>Yes, though the prize favours those who need it most. Money can't buy a berth.</td></tr>
+<tr><td>Can another player be my "and yours"?</td><td>No. Every PC has won a place of their own.</td></tr>
+<tr><td>Do our characters know each other?</td><td>They can, or you can meet at the Naming.</td></tr>
+<tr><td>Is it lethal?</td><td>Session 1 can't kill you. After that, yes.</td></tr>
+<tr><td>What if my character dies?</td><td>You'll bring in a new character with a connection to the story.</td></tr>
+<tr><td>Can I fly up to a city?</td><td>You can try once you have the magic. Corvane's guns fire on anything flying without leave.</td></tr>
+<tr><td>Can we be evil?</td><td>Morally grey is welcome. Don't betray the party.</td></tr>
+<tr><td>How strict are rests and supplies?</td><td>Standard rests. Supplies matter only on long journeys.</td></tr>
+</tbody></table></div>
+</section>
+<footer>Safe to share with the whole table.</footer>
+</main></div>
+
+</body></html>

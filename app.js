@@ -29,7 +29,7 @@
     setActive(null);
     var f = Object.keys(LABELS).map(function (k) { return '<button type="button" data-k="' + k + '" aria-pressed="' + on[k] + '">' + LABELS[k] + "</button>"; }).join("");
     var list = A.places.filter(function (p) { return on[p.kind]; }).slice().sort(function (a, b) { return a.name.replace(/^The /, "").localeCompare(b.name.replace(/^The /, "")); }).map(function (p) { return '<li><button type="button" data-id="' + p.id + '">' + esc(p.name) + "<span>" + LABELS[p.kind] + "</span></button></li>"; }).join("");
-    panel.innerHTML = '<h1>Erwood Atlas</h1><p class="intro">The floating cities, havens, mines and ruins of Erwood. Select a place on the map, or from the list.</p><div class="filters" role="group" aria-label="Show on map">' + f + '</div><ul class="places">' + list + "</ul>";
+    panel.innerHTML = '<h1>Erwood Atlas</h1><p class="intro">The floating cities, havens, mines and ruins of Erwood. Select a place on the map, or from the list.</p><p class="intro"><a href="primer/">Read the player primer</a></p><div class="filters" role="group" aria-label="Show on map">' + f + '</div><ul class="places">' + list + "</ul>";
     panel.scrollTop = 0;
     panel.querySelectorAll(".filters button").forEach(function (b) { b.onclick = function () { var k = b.dataset.k; on[k] = !on[k]; if (on[k]) groups[k].addTo(map); else map.removeLayer(groups[k]); home(); }; });
     panel.querySelectorAll(".places button").forEach(function (b) { b.onclick = function () { location.hash = b.dataset.id; }; });
